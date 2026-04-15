@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>The Corner · 一个动作</title>
+  <title>The Corner · 动作档案</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@400;500;600&family=Noto+Serif+SC:wght@200;300;400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Public+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -53,18 +53,21 @@
 
     .nav-scrolled { background-color: rgba(252, 249, 242, 0.95) !important; backdrop-filter: blur(12px) !important; }
 
-    .video-container {
-      border: 1px solid rgba(166, 106, 74, 0.2);
-      box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.08);
-      transition: box-shadow 0.3s ease;
+    .archive-card {
+      border: 1px solid rgba(166, 106, 74, 0.15);
+      background-color: rgba(166, 106, 74, 0.03);
+      transition: all 0.3s ease;
     }
-    .video-container:hover {
-      box-shadow: 0 12px 28px -8px rgba(166, 106, 74, 0.12);
+    .archive-card:hover {
+      border-color: rgba(166, 106, 74, 0.4);
+      background-color: rgba(166, 106, 74, 0.06);
+      box-shadow: 0 8px 20px -8px rgba(166, 106, 74, 0.12);
     }
   </style>
 </head>
 <body class="bg-[#fcf9f2] text-on-surface">
 
+<!-- 导航栏：高亮「一个动作」 -->
 <nav id="mainNav" class="fixed top-0 w-full z-50 flex justify-center items-center px-12 py-5 bg-[#fcf9f2]/80 backdrop-blur-xl border-b border-outline-variant/30 transition-all duration-500">
   <div class="hidden md:flex items-center gap-12">
     <a class="group flex flex-col items-center gap-1.5 nav-link" href="action.html">
@@ -90,52 +93,61 @@
   </div>
 </nav>
 
-<main class="min-h-screen flex flex-col items-center justify-center px-6 md:px-12 pt-32 pb-24">
-  <div class="max-w-2xl w-full">
+<!-- 主内容区 -->
+<main class="min-h-screen pt-32 pb-24 px-6 md:px-12">
+  <div class="max-w-6xl mx-auto">
 
-    <div class="mb-12">
-      <p class="text-sm tracking-[0.25em] uppercase text-[#A66A4A] font-medium" style="font-family: 'Inter', sans-serif;">DIMENSION I / SUBJECTIVITY</p>
-      <p class="text-base tracking-[0.2em] font-medium mt-3 text-[#A66A4A]" style="font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">维度 I / 主体</p>
+    <!-- 页面标题 -->
+    <h1 class="text-center mb-16">
+      <span class="block text-sm tracking-[0.2em] uppercase text-[#A66A4A] font-medium" style="font-family: 'Inter', sans-serif;">ACTION ARCHIVE</span>
+      <span class="block text-lg tracking-[0.3em] text-[#A66A4A] font-medium mt-2" style="font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">动作档案</span>
+    </h1>
+
+    <!-- 卡片网格 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+
+      <!-- 条目示例 1 -->
+      <div class="archive-card rounded-xl p-5 flex flex-col">
+        <div class="aspect-square bg-[#e5e2db]/30 rounded-lg flex items-center justify-center mb-4">
+          <span class="material-symbols-outlined text-4xl text-[#A66A4A]/30">play_circle</span>
+        </div>
+        <p class="text-xs tracking-[0.3em] text-[#A66A4A]/70 font-medium mb-2" style="font-family: 'Inter', sans-serif;">2026.04.10</p>
+        <p class="font-headline text-lg text-on-surface/85 font-medium leading-relaxed">推开窗</p>
+      </div>
+
+      <!-- 条目示例 2 -->
+      <div class="archive-card rounded-xl p-5 flex flex-col">
+        <div class="aspect-square bg-[#e5e2db]/30 rounded-lg flex items-center justify-center mb-4">
+          <span class="material-symbols-outlined text-4xl text-[#A66A4A]/30">play_circle</span>
+        </div>
+        <p class="text-xs tracking-[0.3em] text-[#A66A4A]/70 font-medium mb-2" style="font-family: 'Inter', sans-serif;">2026.04.03</p>
+        <p class="font-headline text-lg text-on-surface/85 font-medium leading-relaxed">拿起杯子</p>
+      </div>
+
+      <!-- 条目示例 3 -->
+      <div class="archive-card rounded-xl p-5 flex flex-col">
+        <div class="aspect-square bg-[#e5e2db]/30 rounded-lg flex items-center justify-center mb-4">
+          <span class="material-symbols-outlined text-4xl text-[#A66A4A]/30">play_circle</span>
+        </div>
+        <p class="text-xs tracking-[0.3em] text-[#A66A4A]/70 font-medium mb-2" style="font-family: 'Inter', sans-serif;">2026.03.27</p>
+        <p class="font-headline text-lg text-on-surface/85 font-medium leading-relaxed">写下三个字</p>
+      </div>
+
     </div>
 
-    <div class="video-container w-full max-w-md mx-auto aspect-square bg-[#e5e2db]/20 flex items-center justify-center relative overflow-hidden rounded-lg">
-      <video 
-        class="w-full h-full object-cover"
-        autoplay 
-        muted 
-        loop 
-        playsinline
-        poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23e5e2db'/%3E%3Ctext x='50%25' y='50%25' font-family='Inter, sans-serif' font-size='12' fill='%23A66A4A' text-anchor='middle' dy='.3em' letter-spacing='0.3em'%3E[ 动作影像 ]%3C/text%3E%3C/svg%3E"
-      >
-        <source src="action.mp4" type="video/mp4">
-      </video>
-    </div>
-
-    <div class="mt-6 text-center">
-      <p class="text-xs tracking-[0.3em] uppercase text-[#A66A4A]/50 font-medium transition-colors duration-300 hover:text-[#A66A4A]/80" style="font-family: 'Inter', sans-serif;">
-        2026.04.10 ｜ 推开窗
-      </p>
-    </div>
-
-    <div class="mt-16 text-center max-w-xl mx-auto">
-      <p class="text-sm tracking-[0.25em] uppercase text-[#A66A4A] font-medium" style="font-family: 'Inter', sans-serif; line-height: 1.8;">
-        One action, performed with absolute intent, reclaims the ground beneath the feet.
-      </p>
-      <p class="text-base tracking-[0.2em] font-medium mt-3 text-[#A66A4A]" style="font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif; line-height: 1.8;">
-        一个带着全然意图的行动，便能收复脚下的土地。
-      </p>
+    <!-- 返回入口 -->
+    <div class="mt-20 text-center">
+      <a href="action.html" class="inline-flex flex-col items-center gap-2 transition-colors duration-500" style="color: #A66A4A;">
+        <span class="text-sm tracking-[0.15em] uppercase font-medium" style="font-family: 'Inter', sans-serif;">BACK TO ACTION</span>
+        <span class="text-base tracking-[0.2em] font-medium" style="font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">返回动作</span>
+        <span class="material-symbols-outlined text-base mt-1">arrow_upward</span>
+      </a>
     </div>
 
   </div>
 </main>
-<div class="mt-16 text-center">
-  <a href="action-archive.html" class="inline-flex flex-col items-center gap-2 transition-colors duration-500" style="color: #A66A4A;">
-    <span class="text-sm tracking-[0.15em] uppercase font-medium" style="font-family: 'Inter', sans-serif;">ACTION ARCHIVE</span>
-    <span class="text-base tracking-[0.2em] font-medium" style="font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">动作档案</span>
-    <span class="material-symbols-outlined text-base mt-1 transition-transform duration-500 group-hover:translate-y-0.5">arrow_downward</span>
-  </a>
-</div>
 
+<!-- 页脚 -->
 <footer class="w-full py-20 px-12 flex flex-col items-center gap-8 bg-[#fcf9f2] border-t border-outline-variant/20">
   <div class="mt-12 flex flex-col items-center gap-8">
     <p class="text-sm tracking-[0.15em] uppercase text-center text-on-surface/80 font-medium" style="line-height: 1.8; font-family: 'Inter', sans-serif;">The subjectivity being exercised, now.</p>
