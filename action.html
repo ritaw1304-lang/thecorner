@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>The Corner · 一个动作</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@400;500;600&family=Noto+Serif+SC:wght@200;300;400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Public+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary": "#E2462F",
+            "on-surface": "#1c1c18",
+            "background": "#fcf9f2",
+            "outline-variant": "#e3beb8",
+            "action-accent": "#A66A4A"
+          },
+          fontFamily: {
+            "headline": ["Noto Serif SC", "Noto Serif", "serif"],
+            "body": ["Newsreader", "serif"],
+            "label": ["Inter", "Public Sans", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background-color: rgba(28, 28, 24, 0.2); }
+    ::-webkit-scrollbar-thumb:hover { background-color: rgba(166, 106, 74, 0.4); }
+    body { background-color: #fcf9f2; color: #1c1c18; font-family: 'Newsreader', serif; }
+
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 1px;
+      background-color: #E2462F; transform: scaleX(0); transform-origin: center;
+      transition: transform 0.5s ease-out;
+    }
+    .nav-link:hover::after { transform: scaleX(1); }
+
+    .footer-link { position: relative; }
+    .footer-link::after {
+      content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 1px;
+      background-color: #E2462F; transform: scaleX(0); transform-origin: center;
+      transition: transform 0.5s ease-out;
+    }
+    .footer-link:hover::after { transform: scaleX(1); }
+
+    .nav-scrolled { background-color: rgba(252, 249, 242, 0.95) !important; backdrop-filter: blur(12px) !important; }
+
+    .video-container {
+      border: 1px solid rgba(166, 106, 74, 0.2);
+      box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.08);
+      transition: box-shadow 0.3s ease;
+    }
+    .video-container:hover {
+      box-shadow: 0 12px 28px -8px rgba(166, 106, 74, 0.12);
+    }
+  </style>
+</head>
+<body class="bg-[#fcf9f2] text-on-surface">
+
+<nav id="mainNav" class="fixed top-0 w-full z-50 flex justify-center items-center px-12 py-5 bg-[#fcf9f2]/80 backdrop-blur-xl border-b border-outline-variant/30 transition-all duration-500">
+  <div class="hidden md:flex items-center gap-12">
+    <a class="group flex flex-col items-center gap-1.5 nav-link" href="action.html">
+      <span class="font-headline text-[20px] font-normal tracking-[0.3em] text-primary group-hover:text-primary transition-colors duration-500 ease-out">One Action</span>
+      <span class="text-[18px] font-normal tracking-[0.3em] text-primary group-hover:text-primary transition-colors duration-500 ease-out" style="font-family: 'Inter', sans-serif;">一个动作</span>
+    </a>
+    <a class="group flex flex-col items-center gap-1.5 nav-link" href="scene.html">
+      <span class="font-headline text-[20px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out">The Scene</span>
+      <span class="text-[18px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out" style="font-family: 'Inter', sans-serif;">现场</span>
+    </a>
+    <a class="group flex flex-col items-center gap-1.5 nav-link" href="minute.html">
+      <span class="font-headline text-[20px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out">One Minute</span>
+      <span class="text-[18px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out" style="font-family: 'Inter', sans-serif;">一分钟</span>
+    </a>
+    <a class="group flex flex-col items-center gap-1.5 nav-link" href="today.html">
+      <span class="font-headline text-[20px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out">Today</span>
+      <span class="text-[18px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out" style="font-family: 'Inter', sans-serif;">今天</span>
+    </a>
+    <a class="group flex flex-col items-center gap-1.5 nav-link" href="question.html">
+      <span class="font-headline text-[20px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out">One Question</span>
+      <span class="text-[18px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out" style="font-family: 'Inter', sans-serif;">一个问题</span>
+    </a>
+  </div>
+</nav>
+
+<main class="min-h-screen flex flex-col items-center justify-center px-6 md:px-12 pt-32 pb-24">
+  <div class="max-w-2xl w-full">
+
+    <div class="mb-12">
+      <p class="text-sm tracking-[0.25em] uppercase text-[#A66A4A] font-medium" style="font-family: 'Inter', sans-serif;">DIMENSION I / SUBJECTIVITY</p>
+      <p class="text-base tracking-[0.2em] font-medium mt-3 text-[#A66A4A]" style="font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">维度 I / 主体</p>
+    </div>
+
+    <div class="video-container w-full max-w-md mx-auto aspect-square bg-[#e5e2db]/20 flex items-center justify-center relative overflow-hidden rounded-lg">
+      <video 
+        class="w-full h-full object-cover"
+        autoplay 
+        muted 
+        loop 
+        playsinline
+        poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23e5e2db'/%3E%3Ctext x='50%25' y='50%25' font-family='Inter, sans-serif' font-size='12' fill='%23A66A4A' text-anchor='middle' dy='.3em' letter-spacing='0.3em'%3E[ 动作影像 ]%3C/text%3E%3C/svg%3E"
+      >
+        <source src="action.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="mt-6 text-center">
+      <p class="text-xs tracking-[0.3em] uppercase text-[#A66A4A]/50 font-medium transition-colors duration-300 hover:text-[#A66A4A]/80" style="font-family: 'Inter', sans-serif;">
+        2026.04.10 ｜ 推开窗
+      </p>
+    </div>
+
+    <div class="mt-16 text-center max-w-xl mx-auto">
+      <p class="text-sm tracking-[0.25em] uppercase text-[#A66A4A] font-medium" style="font-family: 'Inter', sans-serif; line-height: 1.8;">
+        One action, performed with absolute intent, reclaims the ground beneath the feet.
+      </p>
+      <p class="text-base tracking-[0.2em] font-medium mt-3 text-[#A66A4A]" style="font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif; line-height: 1.8;">
+        一个带着全然意图的行动，便能收复脚下的土地。
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<footer class="w-full py-20 px-12 flex flex-col items-center gap-8 bg-[#fcf9f2] border-t border-outline-variant/20">
+  <div class="mt-12 flex flex-col items-center gap-8">
+    <p class="text-sm tracking-[0.15em] uppercase text-center text-on-surface/80 font-medium" style="line-height: 1.8; font-family: 'Inter', sans-serif;">The subjectivity being exercised, now.</p>
+    <p class="text-base tracking-[0.2em] text-center text-on-surface/80 font-medium -mt-4" style="line-height: 1.8; font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">「当下，被行使的主体性。」</p>
+    <p class="text-xs tracking-[0.1em] text-on-surface/80 font-medium mt-2" style="font-family: 'Inter', sans-serif;">© <span id="currentYear">2026</span> THE CORNER. ALL RIGHTS RESERVED.</p>
+    <a class="text-xs tracking-[0.1em] text-on-surface/80 hover:text-primary transition-colors duration-500 ease-out mt-1 inline-block footer-link font-medium" href="mailto:rita2019@sina.cn" style="font-family: 'Inter', sans-serif;">rita2019@sina.cn</a>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 50) { nav.classList.add('nav-scrolled'); }
+    else { nav.classList.remove('nav-scrolled'); }
+  });
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

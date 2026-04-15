@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>The Corner · 一个问题</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@400;500;600&family=Noto+Serif+SC:wght@200;300;400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Public+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary": "#E2462F",
+            "on-surface": "#1c1c18",
+            "background": "#fcf9f2",
+            "outline-variant": "#e3beb8",
+            "question-accent": "#D06B5A"
+          },
+          fontFamily: {
+            "headline": ["Noto Serif SC", "Noto Serif", "serif"],
+            "headline-en": ["Cormorant Garamond", "serif"],
+            "body": ["Newsreader", "serif"],
+            "label": ["Inter", "Public Sans", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background-color: rgba(28, 28, 24, 0.2); }
+    ::-webkit-scrollbar-thumb:hover { background-color: rgba(208, 107, 90, 0.4); }
+    body { background-color: #fcf9f2; color: #1c1c18; font-family: 'Newsreader', serif; }
+
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 1px;
+      background-color: #E2462F; transform: scaleX(0); transform-origin: center;
+      transition: transform 0.5s ease-out;
+    }
+    .nav-link:hover::after { transform: scaleX(1); }
+
+    .footer-link { position: relative; }
+    .footer-link::after {
+      content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 1px;
+      background-color: #E2462F; transform: scaleX(0); transform-origin: center;
+      transition: transform 0.5s ease-out;
+    }
+    .footer-link:hover::after { transform: scaleX(1); }
+
+    .nav-scrolled { background-color: rgba(252, 249, 242, 0.95) !important; backdrop-filter: blur(12px) !important; }
+
+    .question-card {
+      background-color: rgba(208, 107, 90, 0.05);
+      border: 1px solid rgba(208, 107, 90, 0.15);
+      box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.04);
+      transition: box-shadow 0.3s ease;
+    }
+    .question-card:hover {
+      box-shadow: 0 12px 28px -8px rgba(208, 107, 90, 0.10);
+    }
+  </style>
+</head>
+<body class="bg-[#fcf9f2] text-on-surface">
+
+<!-- 导航栏：高亮「一个问题」 -->
+<nav id="mainNav" class="fixed top-0 w-full z-50 flex justify-center items-center px-12 py-5 bg-[#fcf9f2]/80 backdrop-blur-xl border-b border-outline-variant/30 transition-all duration-500">
+  <div class="hidden md:flex items-center gap-12">
+    <a class="group flex flex-col items-center gap-1.5 nav-link" href="action.html">
+      <span class="font-headline text-[20px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out">One Action</span>
+      <span class="text-[18px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out" style="font-family: 'Inter', sans-serif;">一个动作</span>
+    </a>
+    <a class="group flex flex-col items-center gap-1.5 nav-link" href="scene.html">
+      <span class="font-headline text-[20px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out">The Scene</span>
+      <span class="text-[18px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out" style="font-family: 'Inter', sans-serif;">现场</span>
+    </a>
+    <a class="group flex flex-col items-center gap-1.5 nav-link" href="minute.html">
+      <span class="font-headline text-[20px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out">One Minute</span>
+      <span class="text-[18px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out" style="font-family: 'Inter', sans-serif;">一分钟</span>
+    </a>
+    <a class="group flex flex-col items-center gap-1.5 nav-link" href="today.html">
+      <span class="font-headline text-[20px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out">Today</span>
+      <span class="text-[18px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out" style="font-family: 'Inter', sans-serif;">今天</span>
+    </a>
+    <a class="group flex flex-col items-center gap-1.5 nav-link" href="question.html">
+      <span class="font-headline text-[20px] font-normal tracking-[0.3em] text-primary group-hover:text-primary transition-colors duration-500 ease-out">One Question</span>
+      <span class="text-[18px] font-normal tracking-[0.3em] text-primary group-hover:text-primary transition-colors duration-500 ease-out" style="font-family: 'Inter', sans-serif;">一个问题</span>
+    </a>
+  </div>
+</nav>
+
+<!-- 主内容区 -->
+<main class="min-h-screen flex flex-col items-center justify-center px-6 md:px-12 pt-48 pb-32">
+  <div class="max-w-3xl w-full flex flex-col items-center text-center">
+
+    <!-- 维度标识（珊瑚红） -->
+    <div class="w-full mb-12 text-left md:-ml-12">
+      <p class="font-label text-sm tracking-[0.25em] uppercase leading-relaxed text-[#D06B5A] font-medium" style="font-family: 'Inter', sans-serif;">
+        DIMENSION V / CONFIRMATION
+      </p>
+      <p class="font-headline text-base tracking-[0.2em] font-medium mt-3 text-[#D06B5A]" style="font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">
+        维度 V / 确认
+      </p>
+    </div>
+
+    <!-- 问题卡片（仅中文） -->
+    <div class="question-card w-full max-w-2xl flex flex-col items-center justify-center relative rounded-2xl overflow-hidden px-8 md:px-16 py-14 md:py-20">
+      <div class="w-full text-center">
+        <p class="font-headline text-xl md:text-2xl lg:text-3xl text-on-surface/85 font-normal" style="line-height: 1.8; letter-spacing: 0.05em;">
+          “如果今天是你生命中的最后一天，<br/>你还会做你即将去做的事吗？”
+        </p>
+      </div>
+    </div>
+
+    <!-- 分隔线 -->
+    <div class="w-full max-w-2xl mx-auto flex justify-center mt-20 mb-12">
+      <div class="w-full h-[1px] bg-[#D06B5A]/30"></div>
+    </div>
+
+    <!-- 描述区（珊瑚红） -->
+    <div class="max-w-2xl text-center">
+      <p class="font-label text-sm tracking-[0.15em] uppercase text-[#D06B5A] font-medium" style="line-height: 1.8; font-family: 'Inter', sans-serif;">
+        A question that can redefine the boundaries of reality.
+      </p>
+      <p class="font-headline text-base tracking-[0.2em] font-medium text-[#D06B5A] mt-4" style="line-height: 1.8; font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">
+        一个能重新定义现实的边界的问题。
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<!-- 页脚 -->
+<footer class="w-full py-20 px-12 flex flex-col items-center gap-8 bg-[#fcf9f2] border-t border-outline-variant/20">
+  <div class="mt-12 flex flex-col items-center gap-8">
+    <p class="text-sm tracking-[0.15em] uppercase text-center text-on-surface/80 font-medium" style="line-height: 1.8; font-family: 'Inter', sans-serif;">The subjectivity being exercised, now.</p>
+    <p class="text-base tracking-[0.2em] text-center text-on-surface/80 font-medium -mt-4" style="line-height: 1.8; font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">「当下，被行使的主体性。」</p>
+    <p class="text-xs tracking-[0.1em] text-on-surface/80 font-medium mt-2" style="font-family: 'Inter', sans-serif;">© <span id="currentYear">2026</span> THE CORNER. ALL RIGHTS RESERVED.</p>
+    <a class="text-xs tracking-[0.1em] text-on-surface/80 hover:text-primary transition-colors duration-500 ease-out mt-1 inline-block footer-link font-medium" href="mailto:rita2019@sina.cn" style="font-family: 'Inter', sans-serif;">rita2019@sina.cn</a>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 50) { nav.classList.add('nav-scrolled'); }
+    else { nav.classList.remove('nav-scrolled'); }
+  });
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>The Corner · 今天</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@400;500;600&family=Noto+Serif+SC:wght@200;300;400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Public+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary": "#E2462F",
+            "on-surface": "#1c1c18",
+            "background": "#fcf9f2",
+            "outline-variant": "#e3beb8",
+            "today-accent": "#a8d5ba",
+            "today-accent-light": "#c2e0d0",
+            "today-deep": "#3A6B5A"
+          },
+          fontFamily: {
+            "headline": ["Noto Serif SC", "Noto Serif", "serif"],
+            "headline-en": ["Cormorant Garamond", "serif"],
+            "body": ["Newsreader", "serif"],
+            "label": ["Inter", "Public Sans", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background-color: rgba(28, 28, 24, 0.2); }
+    ::-webkit-scrollbar-thumb:hover { background-color: rgba(58, 107, 90, 0.4); }
+    body { background-color: #fcf9f2; color: #1c1c18; font-family: 'Newsreader', serif; }
+
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 1px;
+      background-color: #E2462F; transform: scaleX(0); transform-origin: center;
+      transition: transform 0.5s ease-out;
+    }
+    .nav-link:hover::after { transform: scaleX(1); }
+
+    .footer-link { position: relative; }
+    .footer-link::after {
+      content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 1px;
+      background-color: #E2462F; transform: scaleX(0); transform-origin: center;
+      transition: transform 0.5s ease-out;
+    }
+    .footer-link:hover::after { transform: scaleX(1); }
+
+    .nav-scrolled { background-color: rgba(252, 249, 242, 0.95) !important; backdrop-filter: blur(12px) !important; }
+
+    .metallic-green-card {
+      background: 
+        linear-gradient(45deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.02) 100%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"),
+        linear-gradient(45deg, #3A6B5A 0%, #4A8A74 50%, #3A6B5A 100%);
+      background-blend-mode: overlay, soft-light, normal;
+      border-top: 1px solid #a8d5ba;
+      box-shadow: 
+        inset 0 1px 0 rgba(168, 213, 186, 0.3),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.4),
+        0 20px 40px -12px rgba(0, 0, 0, 0.2);
+    }
+
+    .archive-link:hover { color: #a8d5ba !important; }
+  </style>
+</head>
+<body class="bg-[#fcf9f2] text-on-surface">
+
+<nav id="mainNav" class="fixed top-0 w-full z-50 flex justify-center items-center px-12 py-5 bg-[#fcf9f2]/80 backdrop-blur-xl border-b border-outline-variant/30 transition-all duration-500">
+  <div class="hidden md:flex items-center gap-12">
+    <a class="group flex flex-col items-center gap-1.5 nav-link" href="action.html">
+      <span class="font-headline text-[20px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out">One Action</span>
+      <span class="text-[18px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out" style="font-family: 'Inter', sans-serif;">一个动作</span>
+    </a>
+    <a class="group flex flex-col items-center gap-1.5 nav-link" href="scene.html">
+      <span class="font-headline text-[20px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out">The Scene</span>
+      <span class="text-[18px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out" style="font-family: 'Inter', sans-serif;">现场</span>
+    </a>
+    <a class="group flex flex-col items-center gap-1.5 nav-link" href="minute.html">
+      <span class="font-headline text-[20px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out">One Minute</span>
+      <span class="text-[18px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out" style="font-family: 'Inter', sans-serif;">一分钟</span>
+    </a>
+    <a class="group flex flex-col items-center gap-1.5 nav-link" href="today.html">
+      <span class="font-headline text-[20px] font-normal tracking-[0.3em] text-primary group-hover:text-primary transition-colors duration-500 ease-out">Today</span>
+      <span class="text-[18px] font-normal tracking-[0.3em] text-primary group-hover:text-primary transition-colors duration-500 ease-out" style="font-family: 'Inter', sans-serif;">今天</span>
+    </a>
+    <a class="group flex flex-col items-center gap-1.5 nav-link" href="question.html">
+      <span class="font-headline text-[20px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out">One Question</span>
+      <span class="text-[18px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out" style="font-family: 'Inter', sans-serif;">一个问题</span>
+    </a>
+  </div>
+</nav>
+
+<main class="min-h-screen flex flex-col items-center justify-center px-6 md:px-12 pt-48 pb-32">
+  <div class="max-w-3xl w-full flex flex-col items-center text-center">
+
+    <div class="w-full mb-12 text-left md:-ml-12">
+      <p class="font-label text-sm tracking-[0.25em] uppercase leading-relaxed text-[#3A6B5A] font-medium" style="font-family: 'Inter', sans-serif;">
+        DIMENSION IV : POSITIONING
+      </p>
+      <p class="font-headline text-base tracking-[0.2em] font-medium mt-3 text-[#3A6B5A] leading-relaxed" style="font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">
+        维度 IV ： 定位
+      </p>
+    </div>
+
+    <div class="metallic-green-card w-full max-w-sm aspect-[3/4] flex flex-col items-center justify-center relative rounded-[24px] overflow-hidden border border-white/5 px-6 py-8">
+      <div class="mb-8">
+        <p class="font-label text-sm tracking-[0.5em] uppercase text-white/90 font-medium" style="font-family: 'Inter', sans-serif;">2026.04.09</p>
+      </div>
+      <div class="w-full px-2">
+        <p class="font-headline text-3xl md:text-4xl lg:text-5xl text-white font-semibold text-center break-words" style="letter-spacing: 0.08em; line-height: 1.8; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">不做了</p>
+      </div>
+    </div>
+
+    <div class="w-full max-w-2xl mx-auto flex justify-center mt-24 mb-16">
+      <div class="w-full h-[1px] bg-[#3A6B5A]/30"></div>
+    </div>
+
+    <div class="max-w-2xl text-center">
+      <p class="font-label text-sm tracking-[0.15em] uppercase whitespace-nowrap text-[#3A6B5A] font-medium" style="line-height: 1.8; font-family: 'Inter', sans-serif;">
+        FINDING THE PLACE THAT BELONGS ONLY TO THE SELF WITHIN EXISTENCE.
+      </p>
+      <p class="font-headline text-base tracking-[0.2em] font-medium text-[#3A6B5A] mt-4" style="line-height: 1.8; font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">
+        于存在中找到那个只属于自己的位置。
+      </p>
+    </div>
+
+    <div class="mt-16 text-center">
+      <a href="today-archive.html" class="archive-link group inline-flex flex-col items-center gap-2 transition-colors duration-500" style="color: #3A6B5A;">
+        <span class="text-sm tracking-[0.15em] uppercase font-medium" style="font-family: 'Inter', sans-serif;">PAST COORDINATES</span>
+        <span class="text-base tracking-[0.2em] font-medium" style="font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">过往坐标</span>
+        <span class="material-symbols-outlined text-base mt-1 transition-transform duration-500 group-hover:translate-y-0.5">arrow_downward</span>
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<footer class="w-full py-20 px-12 flex flex-col items-center gap-8 bg-[#fcf9f2] border-t border-outline-variant/20">
+  <div class="mt-12 flex flex-col items-center gap-8">
+    <p class="text-sm tracking-[0.15em] uppercase text-center text-on-surface/80 font-medium" style="line-height: 1.8; font-family: 'Inter', sans-serif;">The subjectivity being exercised, now.</p>
+    <p class="text-base tracking-[0.2em] text-center text-on-surface/80 font-medium -mt-4" style="line-height: 1.8; font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">「当下，被行使的主体性。」</p>
+    <p class="text-xs tracking-[0.1em] text-on-surface/80 font-medium mt-2" style="font-family: 'Inter', sans-serif;">© <span id="currentYear">2026</span> THE CORNER. ALL RIGHTS RESERVED.</p>
+    <a class="text-xs tracking-[0.1em] text-on-surface/80 hover:text-primary transition-colors duration-500 ease-out mt-1 inline-block footer-link font-medium" href="mailto:rita2019@sina.cn" style="font-family: 'Inter', sans-serif;">rita2019@sina.cn</a>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 50) { nav.classList.add('nav-scrolled'); }
+    else { nav.classList.remove('nav-scrolled'); }
+  });
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
