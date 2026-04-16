@@ -21,7 +21,6 @@
           },
           fontFamily: {
             "headline": ["Noto Serif SC", "Noto Serif", "serif"],
-            "headline-en": ["Cormorant Garamond", "serif"],
             "body": ["Newsreader", "serif"],
             "label": ["Inter", "Public Sans", "sans-serif"]
           }
@@ -67,7 +66,6 @@
 </head>
 <body class="bg-[#fcf9f2] text-on-surface">
 
-<!-- 导航栏：高亮「一个问题」 -->
 <nav id="mainNav" class="fixed top-0 w-full z-50 flex justify-center items-center px-12 py-5 bg-[#fcf9f2]/80 backdrop-blur-xl border-b border-outline-variant/30 transition-all duration-500">
   <div class="hidden md:flex items-center gap-12">
     <a class="group flex flex-col items-center gap-1.5 nav-link" href="action.html">
@@ -93,35 +91,24 @@
   </div>
 </nav>
 
-<!-- 主内容区 -->
 <main class="min-h-screen flex flex-col items-center justify-center px-6 md:px-12 pt-48 pb-32">
   <div class="max-w-3xl w-full flex flex-col items-center text-center">
 
-    <!-- 维度标识（珊瑚红） -->
     <div class="w-full mb-12 text-left md:-ml-12">
-      <p class="font-label text-sm tracking-[0.25em] uppercase leading-relaxed text-[#D06B5A] font-medium" style="font-family: 'Inter', sans-serif;">
-        DIMENSION V / CONFIRMATION
-      </p>
-      <p class="font-headline text-base tracking-[0.2em] font-medium mt-3 text-[#D06B5A]" style="font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">
-        维度 V / 确认
-      </p>
+      <p class="font-label text-sm tracking-[0.25em] uppercase leading-relaxed text-[#D06B5A] font-medium" style="font-family: 'Inter', sans-serif;">DIMENSION V / CONFIRMATION</p>
+      <p class="font-headline text-base tracking-[0.2em] font-medium mt-3 text-[#D06B5A]" style="font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">维度 V / 确认</p>
     </div>
 
-    <!-- 问题卡片（仅中文） -->
     <div class="question-card w-full max-w-2xl flex flex-col items-center justify-center relative rounded-2xl overflow-hidden px-8 md:px-16 py-14 md:py-20">
       <div class="w-full text-center">
-        <p class="font-headline text-xl md:text-2xl lg:text-3xl text-on-surface/85 font-normal" style="line-height: 1.8; letter-spacing: 0.05em;">
-          “如果今天是你生命中的最后一天，<br/>你还会做你即将去做的事吗？”
-        </p>
+        <p id="question-text" class="font-headline text-xl md:text-2xl lg:text-3xl text-on-surface/85 font-normal" style="line-height: 1.8; letter-spacing: 0.05em;"></p>
       </div>
     </div>
 
-    <!-- 分隔线 -->
     <div class="w-full max-w-2xl mx-auto flex justify-center mt-20 mb-12">
       <div class="w-full h-[1px] bg-[#D06B5A]/30"></div>
     </div>
 
-    <!-- 描述区（珊瑚红） -->
     <div class="max-w-2xl text-center">
       <p class="font-label text-sm tracking-[0.15em] uppercase text-[#D06B5A] font-medium" style="line-height: 1.8; font-family: 'Inter', sans-serif;">
         A question that can redefine the boundaries of reality.
@@ -131,10 +118,18 @@
       </p>
     </div>
 
+    <!-- 问题集入口 -->
+    <div class="mt-16 text-center">
+      <a href="question-archive.html" class="inline-flex flex-col items-center gap-2 transition-colors duration-500" style="color: #D06B5A;">
+        <span class="text-sm tracking-[0.15em] uppercase font-medium" style="font-family: 'Inter', sans-serif;">QUESTION ARCHIVE</span>
+        <span class="text-base tracking-[0.2em] font-medium" style="font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">问题集</span>
+        <span class="material-symbols-outlined text-base mt-1 transition-transform duration-500 group-hover:translate-y-0.5">arrow_downward</span>
+      </a>
+    </div>
+
   </div>
 </main>
 
-<!-- 页脚 -->
 <footer class="w-full py-20 px-12 flex flex-col items-center gap-8 bg-[#fcf9f2] border-t border-outline-variant/20">
   <div class="mt-12 flex flex-col items-center gap-8">
     <p class="text-sm tracking-[0.15em] uppercase text-center text-on-surface/80 font-medium" style="line-height: 1.8; font-family: 'Inter', sans-serif;">The subjectivity being exercised, now.</p>
@@ -151,6 +146,13 @@
     else { nav.classList.remove('nav-scrolled'); }
   });
   document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+  fetch('data.json')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('question-text').innerHTML = data.question.current.question;
+    })
+    .catch(error => console.error('加载数据失败:', error));
 </script>
 </body>
 </html>

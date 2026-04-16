@@ -98,23 +98,15 @@
       <p class="text-base tracking-[0.2em] font-medium mt-3 text-[#A66A4A]" style="font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">维度 I / 主体</p>
     </div>
 
-    <div class="video-container w-full max-w-md mx-auto aspect-square bg-[#e5e2db]/20 flex items-center justify-center relative overflow-hidden rounded-lg">
-      <video 
-        class="w-full h-full object-cover"
-        autoplay 
-        muted 
-        loop 
-        playsinline
-        poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23e5e2db'/%3E%3Ctext x='50%25' y='50%25' font-family='Inter, sans-serif' font-size='12' fill='%23A66A4A' text-anchor='middle' dy='.3em' letter-spacing='0.3em'%3E[ 动作影像 ]%3C/text%3E%3C/svg%3E"
-      >
-        <source src="action.mp4" type="video/mp4">
+    <div id="video-container" class="video-container w-full max-w-md mx-auto aspect-square bg-[#e5e2db]/20 flex items-center justify-center relative overflow-hidden rounded-lg">
+      <video id="action-video" class="w-full h-full object-cover" autoplay muted loop playsinline>
+        <source id="video-source" src="" type="video/mp4">
+        您的浏览器不支持视频标签。
       </video>
     </div>
 
     <div class="mt-6 text-center">
-      <p class="text-xs tracking-[0.3em] uppercase text-[#A66A4A]/50 font-medium transition-colors duration-300 hover:text-[#A66A4A]/80" style="font-family: 'Inter', sans-serif;">
-        2026.04.10 ｜ 推开窗
-      </p>
+      <p id="action-date" class="text-xs tracking-[0.3em] uppercase text-[#A66A4A]/50 font-medium transition-colors duration-300 hover:text-[#A66A4A]/80" style="font-family: 'Inter', sans-serif;"></p>
     </div>
 
     <div class="mt-16 text-center max-w-xl mx-auto">
@@ -126,15 +118,17 @@
       </p>
     </div>
 
+    <!-- 动作档案入口 -->
+    <div class="mt-16 text-center">
+      <a href="action-archive.html" class="inline-flex flex-col items-center gap-2 transition-colors duration-500" style="color: #A66A4A;">
+        <span class="text-sm tracking-[0.15em] uppercase font-medium" style="font-family: 'Inter', sans-serif;">ACTION ARCHIVE</span>
+        <span class="text-base tracking-[0.2em] font-medium" style="font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">动作档案</span>
+        <span class="material-symbols-outlined text-base mt-1 transition-transform duration-500 group-hover:translate-y-0.5">arrow_downward</span>
+      </a>
+    </div>
+
   </div>
 </main>
-<div class="mt-16 text-center">
-  <a href="action-archive.html" class="inline-flex flex-col items-center gap-2 transition-colors duration-500" style="color: #A66A4A;">
-    <span class="text-sm tracking-[0.15em] uppercase font-medium" style="font-family: 'Inter', sans-serif;">ACTION ARCHIVE</span>
-    <span class="text-base tracking-[0.2em] font-medium" style="font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">动作档案</span>
-    <span class="material-symbols-outlined text-base mt-1 transition-transform duration-500 group-hover:translate-y-0.5">arrow_downward</span>
-  </a>
-</div>
 
 <footer class="w-full py-20 px-12 flex flex-col items-center gap-8 bg-[#fcf9f2] border-t border-outline-variant/20">
   <div class="mt-12 flex flex-col items-center gap-8">
@@ -152,6 +146,19 @@
     else { nav.classList.remove('nav-scrolled'); }
   });
   document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+  fetch('data.json')
+    .then(response => response.json())
+    .then(data => {
+      const action = data.action.current;
+      document.getElementById('video-source').src = action.video;
+      document.getElementById('action-video').load();
+      document.getElementById('action-date').textContent = `${action.date} ｜ ${action.title}`;
+    })
+    .catch(error => {
+      console.error('加载数据失败:', error);
+      document.getElementById('action-date').textContent = '数据加载失败';
+    });
 </script>
 </body>
 </html>

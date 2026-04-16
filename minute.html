@@ -98,23 +98,15 @@
       <p class="text-base tracking-[0.2em] font-medium mt-3 text-[#5A7A9A]" style="font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">维度 III / 时间</p>
     </div>
 
-    <div class="video-container w-full max-w-md mx-auto aspect-square bg-[#e5e2db]/20 flex items-center justify-center relative overflow-hidden rounded-lg">
-      <video 
-        class="w-full h-full object-cover"
-        autoplay 
-        muted 
-        loop 
-        playsinline
-        poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23e5e2db'/%3E%3Ctext x='50%25' y='50%25' font-family='Inter, sans-serif' font-size='12' fill='%235A7A9A' text-anchor='middle' dy='.3em' letter-spacing='0.3em'%3E[ 一分钟影像 ]%3C/text%3E%3C/svg%3E"
-      >
-        <source src="minute.mp4" type="video/mp4">
+    <div id="video-container" class="video-container w-full max-w-md mx-auto aspect-square bg-[#e5e2db]/20 flex items-center justify-center relative overflow-hidden rounded-lg">
+      <video id="minute-video" class="w-full h-full object-cover" autoplay muted loop playsinline>
+        <source id="video-source" src="" type="video/mp4">
+        您的浏览器不支持视频标签。
       </video>
     </div>
 
     <div class="mt-6 text-center">
-      <p class="text-xs tracking-[0.3em] uppercase text-[#5A7A9A]/50 font-medium transition-colors duration-300 hover:text-[#5A7A9A]/80" style="font-family: 'Inter', sans-serif;">
-        2026.04.11 ｜ 雨声
-      </p>
+      <p id="minute-date" class="text-xs tracking-[0.3em] uppercase text-[#5A7A9A]/50 font-medium transition-colors duration-300 hover:text-[#5A7A9A]/80" style="font-family: 'Inter', sans-serif;"></p>
     </div>
 
     <div class="mt-16 text-center max-w-xl mx-auto">
@@ -124,6 +116,15 @@
       <p class="text-base tracking-[0.2em] font-medium mt-3 text-[#5A7A9A]" style="font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif; line-height: 1.8;">
         从历史的湍流中夺回的那一个当下，收复此刻。
       </p>
+    </div>
+
+    <!-- 时间切片入口 -->
+    <div class="mt-16 text-center">
+      <a href="minute-archive.html" class="inline-flex flex-col items-center gap-2 transition-colors duration-500" style="color: #5A7A9A;">
+        <span class="text-sm tracking-[0.15em] uppercase font-medium" style="font-family: 'Inter', sans-serif;">TIME SLICES</span>
+        <span class="text-base tracking-[0.2em] font-medium" style="font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">时间切片</span>
+        <span class="material-symbols-outlined text-base mt-1 transition-transform duration-500 group-hover:translate-y-0.5">arrow_downward</span>
+      </a>
     </div>
 
   </div>
@@ -145,6 +146,16 @@
     else { nav.classList.remove('nav-scrolled'); }
   });
   document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+  fetch('data.json')
+    .then(response => response.json())
+    .then(data => {
+      const minute = data.minute.current;
+      document.getElementById('video-source').src = minute.video;
+      document.getElementById('minute-video').load();
+      document.getElementById('minute-date').textContent = `${minute.date} ｜ ${minute.title}`;
+    })
+    .catch(error => console.error('加载数据失败:', error));
 </script>
 </body>
 </html>

@@ -23,7 +23,6 @@
           },
           fontFamily: {
             "headline": ["Noto Serif SC", "Noto Serif", "serif"],
-            "headline-en": ["Cormorant Garamond", "serif"],
             "body": ["Newsreader", "serif"],
             "label": ["Inter", "Public Sans", "sans-serif"]
           }
@@ -103,20 +102,16 @@
   <div class="max-w-3xl w-full flex flex-col items-center text-center">
 
     <div class="w-full mb-12 text-left md:-ml-12">
-      <p class="font-label text-sm tracking-[0.25em] uppercase leading-relaxed text-[#3A6B5A] font-medium" style="font-family: 'Inter', sans-serif;">
-        DIMENSION IV : POSITIONING
-      </p>
-      <p class="font-headline text-base tracking-[0.2em] font-medium mt-3 text-[#3A6B5A] leading-relaxed" style="font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">
-        维度 IV ： 定位
-      </p>
+      <p class="font-label text-sm tracking-[0.25em] uppercase leading-relaxed text-[#3A6B5A] font-medium" style="font-family: 'Inter', sans-serif;">DIMENSION IV : POSITIONING</p>
+      <p class="font-headline text-base tracking-[0.2em] font-medium mt-3 text-[#3A6B5A] leading-relaxed" style="font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">维度 IV ： 定位</p>
     </div>
 
     <div class="metallic-green-card w-full max-w-sm aspect-[3/4] flex flex-col items-center justify-center relative rounded-[24px] overflow-hidden border border-white/5 px-6 py-8">
       <div class="mb-8">
-        <p class="font-label text-sm tracking-[0.5em] uppercase text-white/90 font-medium" style="font-family: 'Inter', sans-serif;">2026.04.09</p>
+        <p id="today-date" class="font-label text-sm tracking-[0.5em] uppercase text-white/90 font-medium" style="font-family: 'Inter', sans-serif;"></p>
       </div>
       <div class="w-full px-2">
-        <p class="font-headline text-3xl md:text-4xl lg:text-5xl text-white font-semibold text-center break-words" style="letter-spacing: 0.08em; line-height: 1.8; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">不做了</p>
+        <p id="today-sentence" class="font-headline text-3xl md:text-4xl lg:text-5xl text-white font-semibold text-center break-words" style="letter-spacing: 0.08em; line-height: 1.8; text-shadow: 0 1px 2px rgba(0,0,0,0.2);"></p>
       </div>
     </div>
 
@@ -133,6 +128,7 @@
       </p>
     </div>
 
+    <!-- 过往坐标入口 -->
     <div class="mt-16 text-center">
       <a href="today-archive.html" class="archive-link group inline-flex flex-col items-center gap-2 transition-colors duration-500" style="color: #3A6B5A;">
         <span class="text-sm tracking-[0.15em] uppercase font-medium" style="font-family: 'Inter', sans-serif;">PAST COORDINATES</span>
@@ -160,6 +156,15 @@
     else { nav.classList.remove('nav-scrolled'); }
   });
   document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+  fetch('data.json')
+    .then(response => response.json())
+    .then(data => {
+      const today = data.today.current;
+      document.getElementById('today-date').textContent = today.date;
+      document.getElementById('today-sentence').textContent = today.sentence;
+    })
+    .catch(error => console.error('加载数据失败:', error));
 </script>
 </body>
 </html>

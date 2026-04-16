@@ -1,0 +1,54 @@
+{
+  "action": {
+    "current": {
+      "date": "2026.04.11",
+      "title": "IRMITIANKAN",
+      "video": "https://pub-b3280f9f156848ec9d3392c6f9b6fe1d.r2.dev/One%20Action/4-11%20IRMITIANKAN.mp4"
+    },
+    "history": [
+      { "date": "2026.04.11", "title": "IRMITIANKAN", "video": "https://pub-b3280f9f156848ec9d3392c6f9b6fe1d.r2.dev/One%20Action/4-11%20IRMITIANKAN.mp4" }
+    ]
+  },
+  "minute": {
+    "current": {
+      "date": "2026.04.16",
+      "title": "四月十六日",
+      "video": "https://pub-b3280f9f156848ec9d3392c6f9b6fe1d.r2.dev/One%20Minute/4%E6%9C%8816%E6%97%A5.mp4"
+    },
+    "history": [
+      { "date": "2026.04.16", "title": "四月十六日", "video": "https://pub-b3280f9f156848ec9d3392c6f9b6fe1d.r2.dev/One%20Minute/4%E6%9C%8816%E6%97%A5.mp4" }
+    ]
+  },
+  "scene": {
+    "current": {
+      "date": "2026.04.16",
+      "title": "现场",
+      "photo": "https://pub-b3280f9f156848ec9d3392c6f9b6fe1d.r2.dev/scene/04-16%20%E7%8E%B0%E5%9C%BA.JPG"
+    },
+    "history": [
+      { "date": "2026.04.16", "title": "现场", "photo": "https://pub-b3280f9f156848ec9d3392c6f9b6fe1d.r2.dev/scene/04-16%20%E7%8E%B0%E5%9C%BA.JPG" }
+    ]
+  },
+  "question": {
+    "current": {
+      "date": "2026.04.12",
+      "question": "“如果今天是你生命中的最后一天，<br/>你还会做你即将去做的事吗？”"
+    },
+    "history": [
+      { "date": "2026.04.12", "question": "“如果今天是你生命中的最后一天，<br/>你还会做你即将去做的事吗？”" }
+    ]
+  },
+  "today": {
+    "current": {
+      "date": "2026.04.09",
+      "sentence": "不做了"
+    },
+    "history": [
+      { "date": "2026.04.09", "sentence": "不做了" },
+      { "date": "2026.04.08", "sentence": "这一页，合上了。" },
+      { "date": "2026.04.07", "sentence": "今天，没有加速。" },
+      { "date": "2026.04.06", "sentence": "我停在这里。" },
+      { "date": "2026.04.05", "sentence": "到此为止。" }
+    ]
+  }
+}

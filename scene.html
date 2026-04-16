@@ -100,24 +100,14 @@
       <p class="text-base tracking-[0.2em] font-medium mt-3 text-[#9A6A7A]" style="font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">维度 II / 边界</p>
     </div>
 
-    <div class="photo-container w-full max-w-2xl mx-auto rounded-lg">
+    <div id="photo-wrapper" class="photo-container w-full max-w-2xl mx-auto rounded-lg">
       <div class="aspect-[3/2] bg-[#e5e2db]/30 flex items-center justify-center relative overflow-hidden rounded">
-        <img 
-          src="scene.jpg" 
-          alt="现场照片" 
-          class="w-full h-full object-cover"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-        >
-        <div class="w-full h-full bg-[#e5e2db]/40 flex items-center justify-center" style="display: none;">
-          <p class="text-xs tracking-[0.3em] uppercase text-[#9A6A7A]/60 font-medium" style="font-family: 'Inter', sans-serif;">[ 空场影像 ]</p>
-        </div>
+        <img id="scene-photo" src="" alt="现场照片" class="w-full h-full object-cover">
       </div>
     </div>
 
     <div class="mt-6 text-center">
-      <p class="text-xs tracking-[0.3em] uppercase text-[#9A6A7A]/50 font-medium transition-colors duration-300 hover:text-[#9A6A7A]/80" style="font-family: 'Inter', sans-serif;">
-        2026.04.11 ｜ 窗台
-      </p>
+      <p id="scene-date" class="text-xs tracking-[0.3em] uppercase text-[#9A6A7A]/50 font-medium transition-colors duration-300 hover:text-[#9A6A7A]/80" style="font-family: 'Inter', sans-serif;"></p>
     </div>
 
     <div class="mt-16 text-center max-w-xl mx-auto">
@@ -127,6 +117,15 @@
       <p class="text-base tracking-[0.2em] font-medium mt-3 text-[#9A6A7A]" style="font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif; line-height: 1.8;">
         沉浸在静默中的那一分钟，划定着内在王国的疆域。
       </p>
+    </div>
+
+    <!-- 空场集入口 -->
+    <div class="mt-16 text-center">
+      <a href="scene-archive.html" class="inline-flex flex-col items-center gap-2 transition-colors duration-500" style="color: #9A6A7A;">
+        <span class="text-sm tracking-[0.15em] uppercase font-medium" style="font-family: 'Inter', sans-serif;">SCENE COLLECTION</span>
+        <span class="text-base tracking-[0.2em] font-medium" style="font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">空场集</span>
+        <span class="material-symbols-outlined text-base mt-1 transition-transform duration-500 group-hover:translate-y-0.5">arrow_downward</span>
+      </a>
     </div>
 
   </div>
@@ -148,6 +147,15 @@
     else { nav.classList.remove('nav-scrolled'); }
   });
   document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+  fetch('data.json')
+    .then(response => response.json())
+    .then(data => {
+      const scene = data.scene.current;
+      document.getElementById('scene-photo').src = scene.photo;
+      document.getElementById('scene-date').textContent = `${scene.date} ｜ ${scene.title}`;
+    })
+    .catch(error => console.error('加载数据失败:', error));
 </script>
 </body>
 </html>

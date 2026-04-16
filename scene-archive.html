@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>The Corner · 空场集</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@400;500;600&family=Noto+Serif+SC:wght@200;300;400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Public+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary": "#E2462F",
+            "on-surface": "#1c1c18",
+            "background": "#fcf9f2",
+            "outline-variant": "#e3beb8",
+            "scene-accent": "#9A6A7A"
+          },
+          fontFamily: {
+            "headline": ["Noto Serif SC", "Noto Serif", "serif"],
+            "body": ["Newsreader", "serif"],
+            "label": ["Inter", "Public Sans", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background-color: rgba(28, 28, 24, 0.2); }
+    ::-webkit-scrollbar-thumb:hover { background-color: rgba(154, 106, 122, 0.4); }
+    body { background-color: #fcf9f2; color: #1c1c18; font-family: 'Newsreader', serif; }
+
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 1px;
+      background-color: #E2462F; transform: scaleX(0); transform-origin: center;
+      transition: transform 0.5s ease-out;
+    }
+    .nav-link:hover::after { transform: scaleX(1); }
+
+    .footer-link { position: relative; }
+    .footer-link::after {
+      content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 1px;
+      background-color: #E2462F; transform: scaleX(0); transform-origin: center;
+      transition: transform 0.5s ease-out;
+    }
+    .footer-link:hover::after { transform: scaleX(1); }
+
+    .nav-scrolled { background-color: rgba(252, 249, 242, 0.95) !important; backdrop-filter: blur(12px) !important; }
+
+    .masonry-item {
+      border: 1px solid rgba(154, 106, 122, 0.15);
+      background-color: #F2EDEF;
+      padding: 12px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+    .masonry-item:hover {
+      border-color: rgba(154, 106, 122, 0.4);
+      box-shadow: 0 8px 20px -8px rgba(154, 106, 122, 0.15);
+    }
+  </style>
+</head>
+<body class="bg-[#fcf9f2] text-on-surface">
+
+<nav id="mainNav" class="fixed top-0 w-full z-50 flex justify-center items-center px-12 py-5 bg-[#fcf9f2]/80 backdrop-blur-xl border-b border-outline-variant/30 transition-all duration-500">
+  <div class="hidden md:flex items-center gap-12">
+    <a class="group flex flex-col items-center gap-1.5 nav-link" href="action.html">
+      <span class="font-headline text-[20px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out">One Action</span>
+      <span class="text-[18px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out" style="font-family: 'Inter', sans-serif;">一个动作</span>
+    </a>
+    <a class="group flex flex-col items-center gap-1.5 nav-link" href="scene.html">
+      <span class="font-headline text-[20px] font-normal tracking-[0.3em] text-primary group-hover:text-primary transition-colors duration-500 ease-out">The Scene</span>
+      <span class="text-[18px] font-normal tracking-[0.3em] text-primary group-hover:text-primary transition-colors duration-500 ease-out" style="font-family: 'Inter', sans-serif;">现场</span>
+    </a>
+    <a class="group flex flex-col items-center gap-1.5 nav-link" href="minute.html">
+      <span class="font-headline text-[20px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out">One Minute</span>
+      <span class="text-[18px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out" style="font-family: 'Inter', sans-serif;">一分钟</span>
+    </a>
+    <a class="group flex flex-col items-center gap-1.5 nav-link" href="today.html">
+      <span class="font-headline text-[20px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out">Today</span>
+      <span class="text-[18px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out" style="font-family: 'Inter', sans-serif;">今天</span>
+    </a>
+    <a class="group flex flex-col items-center gap-1.5 nav-link" href="question.html">
+      <span class="font-headline text-[20px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out">One Question</span>
+      <span class="text-[18px] font-normal tracking-[0.3em] text-on-surface/90 group-hover:text-primary transition-colors duration-500 ease-out" style="font-family: 'Inter', sans-serif;">一个问题</span>
+    </a>
+  </div>
+</nav>
+
+<main class="min-h-screen pt-32 pb-24 px-6 md:px-12">
+  <div class="max-w-6xl mx-auto">
+
+    <h1 class="text-center mb-16">
+      <span class="block text-sm tracking-[0.2em] uppercase text-[#9A6A7A] font-medium" style="font-family: 'Inter', sans-serif;">SCENE COLLECTION</span>
+      <span class="block text-lg tracking-[0.3em] text-[#9A6A7A] font-medium mt-2" style="font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">空场集</span>
+    </h1>
+
+    <div id="masonry-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- 动态生成 -->
+    </div>
+
+    <div class="mt-20 text-center">
+      <a href="scene.html" class="inline-flex flex-col items-center gap-2 transition-colors duration-500" style="color: #9A6A7A;">
+        <span class="text-sm tracking-[0.15em] uppercase font-medium" style="font-family: 'Inter', sans-serif;">BACK TO SCENE</span>
+        <span class="text-base tracking-[0.2em] font-medium" style="font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">返回现场</span>
+        <span class="material-symbols-outlined text-base mt-1">arrow_upward</span>
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<footer class="w-full py-20 px-12 flex flex-col items-center gap-8 bg-[#fcf9f2] border-t border-outline-variant/20">
+  <div class="mt-12 flex flex-col items-center gap-8">
+    <p class="text-sm tracking-[0.15em] uppercase text-center text-on-surface/80 font-medium" style="line-height: 1.8; font-family: 'Inter', sans-serif;">The subjectivity being exercised, now.</p>
+    <p class="text-base tracking-[0.2em] text-center text-on-surface/80 font-medium -mt-4" style="line-height: 1.8; font-family: 'Source Han Sans SC', 'Noto Sans SC', sans-serif;">「当下，被行使的主体性。」</p>
+    <p class="text-xs tracking-[0.1em] text-on-surface/80 font-medium mt-2" style="font-family: 'Inter', sans-serif;">© <span id="currentYear">2026</span> THE CORNER. ALL RIGHTS RESERVED.</p>
+    <a class="text-xs tracking-[0.1em] text-on-surface/80 hover:text-primary transition-colors duration-500 ease-out mt-1 inline-block footer-link font-medium" href="mailto:rita2019@sina.cn" style="font-family: 'Inter', sans-serif;">rita2019@sina.cn</a>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 50) { nav.classList.add('nav-scrolled'); }
+    else { nav.classList.remove('nav-scrolled'); }
+  });
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+  fetch('data.json')
+    .then(response => response.json())
+    .then(data => {
+      const grid = document.getElementById('masonry-grid');
+      const history = data.scene.history;
+      history.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'masonry-item';
+        div.innerHTML = `
+          <img src="${item.photo}" alt="${item.title}" class="w-full h-auto rounded-md mb-3" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="w-full h-32 bg-[#e5e2db]/30 rounded-md mb-3 flex items-center justify-center" style="display:none;">📷</div>
+          <p class="text-xs tracking-[0.2em] text-[#9A6A7A]/70 font-medium" style="font-family: 'Inter', sans-serif;">${item.date}</p>
+          <p class="font-headline text-base text-on-surface/85 mt-1">${item.title}</p>
+        `;
+        grid.appendChild(div);
+      });
+    })
+    .catch(error => console.error('加载数据失败:', error));
+</script>
+</body>
+</html>
